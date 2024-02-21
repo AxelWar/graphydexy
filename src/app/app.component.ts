@@ -1,13 +1,19 @@
+
+import { RouterLink, RouterOutlet } from '@angular/router';
+import { PTypeComponent } from './components/p-type/p-type.component';
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss'],
+  standalone: true,
+  imports: [
+    RouterOutlet,
+    RouterLink,
+    PTypeComponent
+  ]
 })
 export class AppComponent {
-  title = 'graphydexy';
+  title = 'angular-standalone-graphql';
 }

@@ -1,0 +1,1 @@
+export const myUrl = 'https://beta.pokeapi.co/graphql/v1beta';
