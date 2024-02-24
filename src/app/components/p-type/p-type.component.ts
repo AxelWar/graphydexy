@@ -1,35 +1,33 @@
+//p-type.component.ts
+
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { GET_TYPES } from '../../graphql.queries/graphql.types.queries';
-import { Apollo } from 'apollo-angular';
+import { PokeService } from '../../shared/services/poke-service.service';
 
 @Component({
   selector: 'app-p-type',
   standalone: true,
   imports: [CommonModule, RouterLink],
-  providers: [Apollo],
+  providers: [PokeService],
   templateUrl: './p-type.component.html',
-  styleUrls: ['./p-type.component.scss']
+  styleUrls: ['./p-type.component.scss'],
 })
 export class PTypeComponent implements OnInit {
-  types: any[] = [];
+  types: string[] = [];
   error: any;
-  loading : boolean = true;
+  loading: boolean = true;
 
-  constructor(private apollo : Apollo){}
+  constructor(private pokeService: PokeService) {}
 
   ngOnInit(): void {
     this.loadTypes();
   }
 
-  loadTypes(){  
-    this.apollo.watchQuery({
-      query: GET_TYPES
-    }).valueChanges.subscribe(({data, error} : any) => {
+  loadTypes() {
+    this.pokeService.getPokemonTypes().subscribe((data: string[]) => {
       this.loading = false;
       this.types = data;
-      console.log(data)
-    })
+    });
   }
 }

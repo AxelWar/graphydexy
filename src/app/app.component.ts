@@ -1,3 +1,4 @@
+//app.component.ts
 
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { PTypeComponent } from './components/p-type/p-type.component';
